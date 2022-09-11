@@ -1,10 +1,10 @@
-import cv2
+import cv2        # using your IDE terminal, do 'pip install opencv-python' to enable you import cv2
 import winsound
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0)        # do 'cam = cv2.VideoCapture(1)' if you'll be using multiple cameras 
 while cam.isOpened():
     ret, frame1 = cam.read()
     ret, frame2 = cam.read()
-    diff = cv2.absdiff(frame1, frame2)
+    diff = cv2.absdiff(frame1, frame2)     # this helps detects the differences in objects in frame1 and frame2
     gray = cv2.cvtColor(diff, cv2.COLOR_RGB2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
     _, thresh = cv2.threshold(blur, 20, 255, cv2.THRESH_BINARY)
